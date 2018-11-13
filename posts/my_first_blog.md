@@ -5,7 +5,7 @@ slug: first_blood
 date: 2017-09-20 11:32:34 UTC+08:00
 tags: nikola, markdown
 category: markdown
-author: ashfinal
+author: ender
 
 ---
 
