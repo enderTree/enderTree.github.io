@@ -1,7 +1,7 @@
 ---
 
 title: test
-slug: first_blood
+slug: test
 date: 2018-11-13 17:35:00 UTC+08:00
 tags: nikola, markdown
 category: markdown
