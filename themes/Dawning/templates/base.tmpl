@@ -1,0 +1,77 @@
+{# -*- coding: utf-8 -*- #}
+
+{% import 'math_helper.tmpl' as math with context %}
+{% import 'base_helper.tmpl' as base with context %}
+{% import 'base_header.tmpl' as header with context %}
+{% import 'base_footer.tmpl' as footer with context %}
+{{ set_locale(lang) }}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+    <head>
+    {{ base.html_headstart() }}
+
+    {{ math.math_styles_ifposts(posts) }}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+    </head>
+    <body>
+        <div class="ui grid">
+            <div class="computer only three wide column no-print">
+                <div id="left-side">
+                    {% block left_side %}
+                    {% endblock left_side %}
+                </div>
+            </div>
+            <div class="ten wide computer sixteen wide tablet sixteen wide mobile column">
+                {{ header.html_header() }}
+                <main id="main">
+                    <div id="main-content">
+                        {% block main_content %}
+                        {% endblock main_content %}
+                    </div>
+                </main>
+                {{ footer.html_footer() }}
+            </div>
+            <div class="computer only three wide column no-print">
+                <div id="right-side">
+                    {% block right_side %}
+                    {% endblock right_side %}
+                </div>
+            </div>
+        </div>
+
+        <!-- GoStats JavaScript Based Code -->
+        <script type="text/javascript">(function(c,o,m,p,u,t,e){
+        c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
+        c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
+        e=o.getElementsByTagName(m)[0];e.parentNode.insertBefore(t,e);
+        })(window,document,'script','//www.gostats.org/5.js','go');
+        go('init',100479892,{'img_counter_type':5,'img_image_type':1});go('send');</script>
+        <!-- End GoStats JavaScript Based Code -->
+
+        <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/assets/js/semantic.min.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="/assets/js/cookie.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".ui.dropdown").dropdown();
+                $('.ui.accordion').accordion();
+                var newstr = $('.cookie.nag').text();
+                $('.cookie.nag').nag({
+                    key: 'globalnotice',
+                    value: newstr
+                  });
+                $('.image-reference').fancybox();
+            });
+        </script>
+
+        {{ math.math_scripts_ifposts(posts) }}
+
+        {% block extra_js %}
+        {% endblock extra_js %}
+    </body>
+</html>

@@ -1,0 +1,88 @@
+{# -*- coding: utf-8 -*- #}
+
+{% import 'math_helper.tmpl' as math with context %}
+{% import 'post_helper.tmpl' as helper with context %}
+{% import 'post_header.tmpl' as pheader with context %}
+{% extends 'base.tmpl' %}
+
+{% block extra_head %}
+    {{ super() }}
+    {% if post.meta('keywords') %}
+    <meta name="keywords" content="{{ post.meta('keywords')|e }}">
+    {% endif %}
+    <meta name="author" content="{{ post.author()|e }}">
+    {% if post.is_draft %}
+        <meta name="robots" content="noindex">
+    {% endif %}
+    {{ helper.open_graph_metadata(post) }}
+    {{ helper.twitter_card_information(post) }}
+    {{ helper.meta_translations(post) }}
+    {% if not post.meta('nocomments') %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/gitalk.css">
+    {% endif %}
+    {% if "asciinema" in post.tags %}
+        <link rel="stylesheet" type="text/css" href="/assets/css/asciinema-player.css" />
+    {% endif %}
+    {{ math.math_styles_ifpost(post) }}
+{% endblock %}
+
+{% block main_content %}
+<div class="postpage post-{{ post.meta('type') }} page-body" itemscope="itemscope" itemtype="http://schema.org/Article">
+    {{ pheader.html_post_header() }}
+    {{ pheader.html_translations(post) }}
+    <div class="post-content" itemprop="article text">
+        <div id="post-content">
+        {{ post.text() }}
+        </div>
+    </div>
+    <div class="post-info">
+        {% if post.meta('link') %}
+        <p>引用资源：<a href="{{ post.meta('link') }}" target="_blank">{{ post.meta('link') }}</a></p>
+        {% endif %}
+        <p>文章链接：<a href="{{ abs_link(post.permalink()) }}" target="_blank">{{ abs_link(post.permalink()) }}</a></p>
+        <p>发布/更新于：
+            <time datetime="{{ post.meta('updated') }}" itemprop="dateModified" title="{{ post.formatted_updated(date_format)|e }}">{{ post.formatted_updated(date_format)|e }}
+            </time>
+        </p>
+        <p>版权声明：如无特别说明，本站文章均遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 协议，转载请注明作者及出处。</p>
+    </div>
+    {# <div class="addthis_inline_share_toolbox"></div> #}
+    {{ helper.html_pager(post) }}
+    {% if not post.meta('nocomments') %}
+        <div id="gitalk-container" class="comments-block no-print"></div>
+    {% else %}
+        <div class="no-comments-block no-print">
+            No Comments Allowed.
+        <div>
+    {% endif %}
+</div>
+{% endblock main_content %}
+
+{% block extra_js %}
+    {{ math.math_scripts_ifpost(post) }}
+    {# <script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59ecbed442c8595a"></script> #}
+    {% if not post.meta('nocomments') %}
+    <script src="/assets/js/md5.min.js"></script>
+    <script src="/assets/js/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '0d02be3602d5c6fb4b24',
+            clientSecret: '447f09996365ae417d09b68413535a1f1892e294',
+            repo: 'enderTree.github.io',
+            owner: 'enderTree',
+            admin: ['enderTree', 'ender'],
+            id: md5(window.location.pathname),
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    {% endif %}
+    {% if "mermaid" in post.tags %}
+        <script type="text/javascript" src="/assets/js/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad: true, theme: 'forest'});</script>
+    {% endif %}
+    {% if "asciinema" in post.tags %}
+        <script type="text/javascript" src="/assets/js/asciinema-player.js"></script>
+    {% endif %}
+{% endblock extra_js %}
