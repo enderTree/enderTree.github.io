@@ -1418,7 +1418,7 @@ GLOBAL_CONTEXT = {
         # {"name": "(power up)",
             # "website": "http://kevinjiang.info",
             # "description": "(power up)"},
-        # ],
+        ],
 }
 
 # Add functions here and they will be called with template
