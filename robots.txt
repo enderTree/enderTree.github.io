@@ -1,0 +1,4 @@
+Sitemap: https://enderTree.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: enderTree.github.io
