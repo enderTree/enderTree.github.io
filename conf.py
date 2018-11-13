@@ -18,7 +18,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "ender"  # (translatable)
-BLOG_TITLE = "MacPlay"  # (translatable)
+BLOG_TITLE = "ENDER"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://enderTree.github.io/"
