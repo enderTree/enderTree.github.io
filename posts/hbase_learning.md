@@ -2,7 +2,7 @@
 
 title: hbase学习
 slug: hbase_learning
-date: 2018-11-14 18:27:35 PM
+date: 2018-11-14 18:27:35 UTC+08:00
 tags: markdown
 category: markdown
 author: ender
