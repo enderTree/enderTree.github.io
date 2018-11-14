@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Share something interesting about byte ocean">
+<meta name="description" content="upload.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="generator" content="Nikola (getnikola.com)">
-<title>Posts for year 2018 - ENDER</title>
+<title>upload.sh - ENDER</title>
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -13,7 +13,7 @@
 <link href="../assets/css/semantic.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="canonical" href="https://enderTree.github.io/2018/">
+<link rel="canonical" href="https://enderTree.github.io/listings/upload.sh.html">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 </head>
 <body>
@@ -34,7 +34,7 @@
                     ENDER
                 </a>
                         <a class="item" href="../">Posts</a>
-                        <a class="item" href="../listings/">Code</a>
+                        <a class="item" href=".">Code</a>
                         <a class="item" href="../galleries/">Gallery</a>
                         <a class="item" href="../categories/">Tags</a>
                         <a class="item" href="../archive.html">Archive</a>
@@ -49,7 +49,7 @@
                     <a class="title">ENDER</a>
                     <div class="content">
                                 <a class="item" href="../">Posts</a>
-                                <a class="item" href="../listings/">Code</a>
+                                <a class="item" href=".">Code</a>
                                 <a class="item" href="../galleries/">Gallery</a>
                                 <a class="item" href="../categories/">Tags</a>
                                 <a class="item" href="../archive.html">Archive</a>
@@ -61,20 +61,39 @@
     </div>
 
     </header><main id="main"><div id="main-content">
-<div class="listpage page-body">
-    <div class="list-title">Posts for year 2018</div>
-    <div class="list-postlist">
-        <ul>
-<li>
-            <a href="../posts/hbase_learning/">hbase学习</a>
-            <time datetime="2018-11-14T18:27:35+08:00" title="2018-11-14 18:27">2018-11-14 18:27</time>
-</li>
-        <li>
-            <a href="../posts/test/">test</a>
-            <time datetime="2018-11-13T17:35:00+08:00" title="2018-11-13 17:35">2018-11-13 17:35</time>
-</li>
-        </ul>
-</div>
+<div class="listingpage page-body" itemscope="itemscope" itemtype="http://schema.org/Article">
+    <div class="list-title">
+                <a href=".">listings /</a>
+                upload.sh
+    </div>
+        <p class="downloadlink">
+            <i class="cloud download alternate icon"></i><a href="upload.sh">Download</a>
+        </p>
+        <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingsuploadsh-1"> 1</a>
+<a href="#listingsuploadsh-2"> 2</a>
+<a href="#listingsuploadsh-3"> 3</a>
+<a href="#listingsuploadsh-4"> 4</a>
+<a href="#listingsuploadsh-5"> 5</a>
+<a href="#listingsuploadsh-6"> 6</a>
+<a href="#listingsuploadsh-7"> 7</a>
+<a href="#listingsuploadsh-8"> 8</a>
+<a href="#listingsuploadsh-9"> 9</a>
+<a href="#listingsuploadsh-10">10</a>
+<a href="#listingsuploadsh-11">11</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingsuploadsh-1"></a><span class="nv">ds</span><span class="o">=</span><span class="nv">$1</span>
+<a name="listingsuploadsh-2"></a><span class="nv">file</span><span class="o">=</span><span class="nv">$2</span>
+<a name="listingsuploadsh-3"></a><span class="nv">project</span><span class="o">=</span><span class="nv">$3</span>
+<a name="listingsuploadsh-4"></a><span class="c1">#echo "tunnel upload  ${file} ${project}.ods_bill_old_sys_temp_dd/pt='${ds}' -c gbk"</span>
+<a name="listingsuploadsh-5"></a>sh /home/webmaster/odpscmd/bin/odpscmd <span class="p">&amp;</span>
+<a name="listingsuploadsh-6"></a><span class="c1">#echo "alter table ${project}.ods_bill_old_sys_temp_dd drop if exists partition(pt='${ds}')"</span>
+<a name="listingsuploadsh-7"></a><span class="c1">#echo "tunnel upload  ${file} ${project}.ods_bill_old_sys_temp_dd/pt='${ds} -c gbk'"</span>
+<a name="listingsuploadsh-8"></a>/home/webmaster/odpscmd/bin/odpscmd -e <span class="s2">"alter table </span><span class="si">${</span><span class="nv">project</span><span class="si">}</span><span class="s2">.ods_bill_old_sys_temp_dd drop if exists partition(pt='</span><span class="si">${</span><span class="nv">ds</span><span class="si">}</span><span class="s2">')"</span>
+<a name="listingsuploadsh-9"></a>/home/webmaster/odpscmd/bin/odpscmd -e <span class="s2">"alter table </span><span class="si">${</span><span class="nv">project</span><span class="si">}</span><span class="s2">.ods_bill_old_sys_temp_dd add if not exists partition(pt='</span><span class="si">${</span><span class="nv">ds</span><span class="si">}</span><span class="s2">')"</span>
+<a name="listingsuploadsh-10"></a>/home/webmaster/odpscmd/bin/odpscmd -e <span class="s2">"tunnel upload  </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">project</span><span class="si">}</span><span class="s2">.ods_bill_old_sys_temp_dd/pt='</span><span class="si">${</span><span class="nv">ds</span><span class="si">}</span><span class="s2">' -c gbk"</span>
+<a name="listingsuploadsh-11"></a><span class="c1">#echo "alter table ods_bill_old_sys_temp_dd add if not exists partition(pt='"ALEVE"${ds}')"</span>
+</pre></td>
+</tr></table>
 </div>
                     </div>
                 </main><div class="footer extra-block no-print">
