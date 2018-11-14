@@ -16,4 +16,4 @@ author: ender
 	安装hbase
 ## 实践
 
-ff
+ps
