@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="listings">
+<meta name="description" content="autoPush.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="generator" content="Nikola (getnikola.com)">
-<title>listings - ENDER</title>
+<title>autoPush.sh - ENDER</title>
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -13,7 +13,7 @@
 <link href="../assets/css/semantic.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="canonical" href="https://enderTree.github.io/listings/">
+<link rel="canonical" href="https://enderTree.github.io/listings/autoPush.sh.html">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 </head>
 <body>
@@ -34,7 +34,7 @@
                     ENDER
                 </a>
                         <a class="item" href="../">Posts</a>
-                        <a class="active item" href=".">Code</a>
+                        <a class="item" href=".">Code</a>
                         <a class="item" href="../galleries/">Gallery</a>
                         <a class="item" href="../categories/">Tags</a>
                         <a class="item" href="../archive.html">Archive</a>
@@ -49,7 +49,7 @@
                     <a class="title">ENDER</a>
                     <div class="content">
                                 <a class="item" href="../">Posts</a>
-                                <a class="active item" href=".">Code</a>
+                                <a class="item" href=".">Code</a>
                                 <a class="item" href="../galleries/">Gallery</a>
                                 <a class="item" href="../categories/">Tags</a>
                                 <a class="item" href="../archive.html">Archive</a>
@@ -64,15 +64,26 @@
 <div class="listingpage page-body" itemscope="itemscope" itemtype="http://schema.org/Article">
     <div class="list-title">
                 <a href=".">listings /</a>
+                autoPush.sh
     </div>
-    <ul>
-<li>
-            <a href="autoPush.sh.html" class="listing-file"><i class="file outline icon"></i> autoPush.sh</a>
-        </li>
-        <li>
-            <a href="upload.sh.html" class="listing-file"><i class="file outline icon"></i> upload.sh</a>
-        </li>
-    </ul>
+        <p class="downloadlink">
+            <i class="cloud download alternate icon"></i><a href="autoPush.sh">Download</a>
+        </p>
+        <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingsautopushsh-1">1</a>
+<a href="#listingsautopushsh-2">2</a>
+<a href="#listingsautopushsh-3">3</a>
+<a href="#listingsautopushsh-4">4</a>
+<a href="#listingsautopushsh-5">5</a>
+<a href="#listingsautopushsh-6">6</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingsautopushsh-1"></a><span class="c1">#/bin/bash</span>
+<a name="listingsautopushsh-2"></a><span class="c1"># path=`pwd`</span>
+<a name="listingsautopushsh-3"></a><span class="c1"># echo ${path}</span>
+<a name="listingsautopushsh-4"></a>git add .
+<a name="listingsautopushsh-5"></a>git commit -am <span class="si">${</span><span class="nv">1</span><span class="si">}</span>
+<a name="listingsautopushsh-6"></a>git push --set-upstream origin src
+</pre></td>
+</tr></table>
 </div>
                     </div>
                 </main><div class="footer extra-block no-print">
