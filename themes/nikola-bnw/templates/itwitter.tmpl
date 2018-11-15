@@ -1,0 +1,35 @@
+{# -*- coding: utf-8 -*- #}
+
+{% extends 'base.tmpl' %}
+
+{% block extra_head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/assets/css/gitalk.css">
+{% endblock %}
+
+{% block main_content %}
+<div class="post-{{ post.meta('type') }} storypage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    <div class="page-content">
+    {{ post.text() }}
+    </div>
+</div>
+<div id="gitalk-container" class="comments-block no-print"></div>
+{% endblock main_content %}
+
+{% block extra_js %}
+    <script src="/assets/js/md5.min.js"></script>
+    <script src="/assets/js/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '0d02be3602d5c6fb4b24',
+            clientSecret: '447f09996365ae417d09b68413535a1f1892e294',
+            repo: 'enderTree.github.io',
+            owner: 'enderTree',
+            admin: ['enderTree', 'ender'],
+            id: md5(window.location.pathname),
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')
+    </script>
+{% endblock extra_js %}
