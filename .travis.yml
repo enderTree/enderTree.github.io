@@ -29,3 +29,4 @@ notifications:
   email:
     on_success: change
     on_failure: always
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=835cc440047f26a66070bd016e1be579734d0c53b75ca044779fd42f53504901
