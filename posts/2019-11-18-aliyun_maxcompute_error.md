@@ -22,7 +22,9 @@ author: ender
 但是数据同步组件我们设置的是：主键冲突时：on duplicate key update(当主键/约束冲突update数据)
 
 ​	![](https://endertree.github.io/galleries/TIM_20191118100942.thumbnail.png)
-​	并且看日志中的sql也是对的：
+​	
+
+并且看日志中的sql也是对的：
 
 ```sql
 
